@@ -23,7 +23,8 @@ switch ($queHago) {
 			include("partes/formLogin.php");
 		break;
 	case 'MostrarFormAlta':
-			include("partes/formvoto.php");
+			include("partes/formVotacion.php");
+
 		break;
 	case 'BorrarVoto':
 			$voto = new Voto();
@@ -43,8 +44,8 @@ switch ($queHago) {
 			echo $cantidad;
 
 		break;
-	case 'Traervoto':
-			$voto = voto::TraerUnvoto($_POST['id']);		
+	case 'TraerVoto':
+			$voto = Voto::TraerUnVoto($_POST['idVoto']);		
 			echo json_encode($voto) ;
 
 		break;

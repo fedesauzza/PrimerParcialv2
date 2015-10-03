@@ -3,6 +3,7 @@
 <?php 
 //session_start();
 if(isset($_SESSION['registrado'])){  ?>
+
     <div class="container">
 
       <form class="form-ingreso" onsubmit="GuardarVoto();return false">
@@ -22,7 +23,7 @@ if(isset($_SESSION['registrado'])){  ?>
         <input type="radio" name="sexo" id="sexo"
           <?php if (isset($sexo) && $sexo=="M") echo "checked";?>
           value="M">Male
-       <input type="hidden" name="idVoto" id="idVoto" readonly="true">
+       <input type="hidden" name="idVoto" id="idVoto" class="form-control">
         <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
      
       </form>

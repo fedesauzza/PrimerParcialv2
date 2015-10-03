@@ -21,37 +21,20 @@ class Voto
 	 public function ModificarVotoParametros()
 	 {
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE voto
-				set dni=:dni,
-				provincia=:provincia,
-				candidato=:candidato,
-				sexo=:sexo
-				WHERE id_voto=:id_voto");
-			$consulta->bindValue(':id_voto',$this->id_voto, PDO::PARAM_INT);
-			$consulta->bindValue(':dni',$this->dni, PDO::PARAM_INT);
-			$consulta->bindValue(':provincia',$this->provincia, PDO::PARAM_STR);
-			$consulta->bindValue(':candidato', $this->candidato, PDO::PARAM_STR);
-			$consulta->bindValue(':sexo', $this->sexo, PDO::PARAM_STR);
-
+			$consulta =$objetoAccesoDato->RetornarConsulta("CALL ModificarVotoParametros('$this->id_voto','$this->provincia','$this->candidato','$this->sexo')");
 			return $consulta->execute();
 	 }
 	 public function InsertarElVotoParametros()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into voto (dni,provincia,candidato,sexo)values(:dni,:provincia,:candidato,:sexo)");
-				$consulta->bindValue(':dni', $this->dni, PDO::PARAM_INT);
-				$consulta->bindValue(':provincia',$this->provincia, PDO::PARAM_STR);
-				$consulta->bindValue(':candidato', $this->candidato, PDO::PARAM_STR);
-				$consulta->bindValue(':sexo', $this->sexo, PDO::PARAM_STR);
-				
-		
+				$consulta =$objetoAccesoDato->RetornarConsulta("CALL InsertarElVotoParametros('$this->dni','$this->provincia','$this->candidato','$this->sexo')");
 				$consulta->execute();		
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
 	 public static function TraerTodoLosVotos()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM voto");
+			$consulta =$objetoAccesoDato->RetornarConsulta("CALL TraerTodoLosVotos()");
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "Voto");		
 	}
@@ -59,10 +42,20 @@ class Voto
 	public function BorrarVoto()
 	 {
 	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM voto WHERE id_voto=:id_voto");	
-			$consulta->bindValue(':id_voto',$this->id_voto, PDO::PARAM_INT);		
+			$consulta =$objetoAccesoDato->RetornarConsulta("CALL BorrarVoto('$this->id_voto')");			
 			$consulta->execute();
 			return $consulta->rowCount();
 	 }
+
+	 public static function TraerUnVoto($id) 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("CALL TraerUnVoto($id)");
+			$consulta->execute();
+			$votoBuscado= $consulta->fetchObject('Voto');
+			return $votoBuscado;				
+
+			
+	}
 }
 ?>
