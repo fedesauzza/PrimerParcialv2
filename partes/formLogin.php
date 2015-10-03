@@ -11,7 +11,7 @@ if(!isset($_SESSION['registrado'])){  ?>
       <form  class="form-ingreso " onsubmit="validarLogin();return false;">
         <h2 class="form-ingreso-heading">Ingrese sus datos</h2>
         <label for="correo" class="sr-only">DNI</label>
-                <input type="number" id="dni" class="form-control" placeholder="DNI" required="" autofocus="" minlength="7" maxlength="8" value="<?php  if(isset($_COOKIE["registro"])){echo $_COOKIE["registro"];}?>" >
+                <input type="number" id="dni" class="form-control" placeholder="DNI" required="" autofocus="" minlength="7" maxlength="8" min="1000000" max="99000000" value="<?php  if(isset($_COOKIE["registro"])){echo $_COOKIE["registro"];}?>" >
         <div class="checkbox">
           <label>
             <input type="checkbox" id="recordarme" checked> Recordame
