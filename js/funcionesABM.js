@@ -44,28 +44,36 @@ function EditarCD(idParametro)
 
 function GuardarVoto()
 {
+	alert("hola");
 		var id=$("#idVoto").val();
+		alert(id);
 		var provincia=$("#provincia").val();
+		alert(provincia);
 		var candidato=$("#candidato").val();
-		var anio=$("#sexo").val();
+		alert(candidato);
+		var sexo=$("#sexo").val();
+		alert(sexo);
 
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
 		data:{
 			queHacer:"GuardarVoto",
-			id:id,
+			idVoto:id,
 			provincia:provincia,
 			candidato:candidato,
 			sexo:sexo	
 		}
 	});
 	funcionAjax.done(function(retorno){
-			Mostrar("MostrarGrilla");
-		$("#informe").html("cantidad de agregados "+ retorno);	
+		alert(retorno);
+			Mostrar("Deslogear");
+			MostrarLogin();
+		$("#principal").html("cantidad de agregados "+ retorno);	
 		
 	});
-	funcionAjax.fail(function(retorno){	
-		$("#informe").html(retorno.responseText);	
+	funcionAjax.fail(function(retorno){
+	alert(retorno);	
+		$("#principal").html(retorno.responseText);	
 	});	
 }
