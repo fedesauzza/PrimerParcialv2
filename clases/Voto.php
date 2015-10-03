@@ -48,5 +48,21 @@ class Voto
 				$consulta->execute();		
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
+	 public static function TraerTodoLosVotos()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM voto");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Voto");		
+	}
+
+	public function BorrarVoto()
+	 {
+	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM voto WHERE id_voto=:id_voto");	
+			$consulta->bindValue(':id_voto',$this->id_voto, PDO::PARAM_INT);		
+			$consulta->execute();
+			return $consulta->rowCount();
+	 }
 }
 ?>

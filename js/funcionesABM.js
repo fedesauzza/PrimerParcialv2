@@ -1,21 +1,23 @@
-function BorrarCD(idParametro)
+function BorrarVoto(idParametro)
 {
 	//alert(idParametro);
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
 		data:{
-			queHacer:"BorrarCD",
-			id:idParametro	
+			queHacer:"BorrarVoto",
+			idVoto:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
+		//alert(retorno);
 		Mostrar("MostrarGrilla");
-		$("#informe").html("cantidad de eliminados "+ retorno);	
+		$("#principal").html("cantidad de eliminados "+ retorno);	
 		
 	});
 	funcionAjax.fail(function(retorno){	
-		$("#informe").html(retorno.responseText);	
+		//alert(retorno);
+		$("#principal").html(retorno.responseText);	
 	});	
 }
 
@@ -46,13 +48,9 @@ function GuardarVoto()
 {
 	alert("hola");
 		var id=$("#idVoto").val();
-		alert(id);
 		var provincia=$("#provincia").val();
-		alert(provincia);
 		var candidato=$("#candidato").val();
-		alert(candidato);
 		var sexo=$("#sexo").val();
-		alert(sexo);
 
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
