@@ -34,6 +34,7 @@ switch ($queHago) {
 
 		break;
 	case 'GuardarVoto':
+			//session_start();
 			$voto = new Voto();
 			$voto->id_voto=$_POST['idVoto'];
 			$voto->dni=$_SESSION['registrado'];

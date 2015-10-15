@@ -85,6 +85,7 @@
 		<section class="widget clearfix" >
 			<h4 class="widgettitle">Contador de votos</h4>
 				<div id="Contador">
+				
 				<!--contenido dinamico cargado por ajax-->
 				</div>
 			

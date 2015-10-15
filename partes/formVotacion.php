@@ -16,13 +16,10 @@ if(isset($_SESSION['registrado'])){  ?>
           <option value="+A">+A</option>
           <option value="Neoliberal">Neoliberal</option>
         </select><br>
-        <label for="sexo" class="sr-only">Sexo</label>
-        <input type="radio" name="sexo" id="sexo"
-          <?php if (isset($sexo) && $sexo=="F") echo "checked";?>
-          value="F">Female
-        <input type="radio" name="sexo" id="sexo"
-          <?php if (isset($sexo) && $sexo=="M") echo "checked";?>
-          value="M">Male
+        <label>
+            <input type="radio" Name="sexo" id="sexoM" value="M" checked>Masculino
+            <input type="radio" Name="sexo" id="sexoF" value="F">Femenino
+          </label> 
        <input type="hidden" name="idVoto" id="idVoto" class="form-control">
         <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
      

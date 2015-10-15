@@ -42,7 +42,8 @@ function Mostrar(queMostrar)
 	});
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
-		$("#sidebar").html("Correcto!!!");	
+		//$("#sidebar").html("Correcto!!!");
+		$("#Contador").html("lalalalala");	
 	});
 	funcionAjax.fail(function(retorno){
 		$("#principal").html(":(");
@@ -64,7 +65,9 @@ function MostrarLogin()
 	});
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
+		
 		$("#sidebar").html("Correcto Form login!!!");	
+		$("#Contador").html("lalalalala");
 	});
 	funcionAjax.fail(function(retorno){
 		$("#botonesABM").html(":(");

@@ -23,7 +23,7 @@ function BorrarVoto(idParametro)
 
 function EditarVoto(idParametro)
 {
-	alert("hola");
+	Mostrar("MostrarFormAlta");
 	var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -34,34 +34,37 @@ function EditarVoto(idParametro)
 	});
 	funcionAjax.done(function(retorno){
 
-		alert("chau");
 		var voto =JSON.parse(retorno);
 		$("#provincia").val(voto.provincia);
-		alert(voto.provincia);
 		$("#candidato").val(voto.candidato);
-		alert(voto.candidato);
-		$("#sexo").val(voto.sexo);
-		alert(voto.sexo);	
 		$("#idVoto").val(voto.id_voto);
-		alert(voto.id_voto);
-
-		
-		Mostrar("MostrarFormAlta");
+		if (voto.sexo == 'M') {
+			document.getElementById('sexoM').checked = true;
+		}
+		else{
+			document.getElementById('sexoF').checked = true;
+		}
 	});
 	funcionAjax.fail(function(retorno){	
 		$("#principal").html(retorno.responseText);	
 	});
 
-	Mostrar("MostrarFormAlta");
+	
 }
 
 function GuardarVoto()
 {
-	alert("hola");
+
 		var id=$("#idVoto").val();
 		var provincia=$("#provincia").val();
 		var candidato=$("#candidato").val();
-		var sexo=$("#sexo").val();
+		var sexo;
+		if (document.getElementById('sexoM').checked == true) {
+			sexo = 'M';
+		}
+		else{
+			sexo = 'F';
+		}
 
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
